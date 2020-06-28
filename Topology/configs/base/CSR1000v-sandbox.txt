@@ -1,0 +1,125 @@
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname csr1000v
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no logging console
+enable secret 5 $1$gkJ1$EofN9ajW9k18SoRTgkhYr/
+!
+no aaa new-model
+!
+!
+ip domain name abc.inc
+!
+!
+!
+login on-success log
+!
+!
+
+!
+subscriber templating
+!
+multilink bundle-name authenticated
+!
+!
+crypto pki trustpoint TP-self-signed-1530096085
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-1530096085
+ revocation-check none
+ rsakeypair TP-self-signed-1530096085
+!
+!
+license udi pid CSR1000V sn 92O4ZHFBK7O
+license boot level ax
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+netconf-yang
+!
+restconf
+!
+username developer privilege 15 secret 5 $1$HtLC$7Kj3hGBoDnSHzdEeR/2ix.
+username cisco privilege 15 secret 5 $1$aO1Y$0AFVz00ON.hE4WkY.BeYq.
+username root privilege 15 secret 5 $1$vpY7$mh9d69ui3koSaITBi8k9D/
+!
+redundancy
+!
+!
+!
+cdp run
+!
+!
+!
+!
+interface GigabitEthernet1
+ description MANAGEMENT INTERFACE - DON'T TOUCH ME
+ ip address 10.10.20.48 255.255.255.0
+ negotiation auto
+ cdp enable
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ description Configured by RESTCONF
+ ip address 10.255.255.1 255.255.255.0
+ negotiation auto
+ cdp enable
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ description Network Interface
+ no ip address
+ shutdown
+ negotiation auto
+ cdp enable
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip route 0.0.0.0 0.0.0.0 GigabitEthernet1 10.10.20.254
+!
+ip ssh rsa keypair-name ssh-key
+ip ssh version 2
+ip scp server enable
+!
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+line con 0
+ exec-timeout 0 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+!
+ntp server 10.11.10.65
+ntp server 10.12.10.65
+ntp server 10.13.10.65
+ntp server 10.14.10.65
+!
+!
+!
+!
+!
+end
