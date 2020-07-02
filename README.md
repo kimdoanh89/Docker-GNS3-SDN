@@ -1,5 +1,13 @@
 ## Introduction
-This repo is for how to use docker, gns3, and ODL.
+This repo is for Network automation with python, ncclient,
+ ODL controller, and NETCONF/YANG for network managemet 
+ in GNS3. 
+ 
+## Required software tools set up
+- [Set up Windows 10 workstation environment](/Topology/00_setup_Windows10_environment.ipynb)
+
+## Set up topology for the lab in GNS3
+- [Build the initial topology](/Topology/00_build_topology.ipynb)
 
 ## Some useful references:
  

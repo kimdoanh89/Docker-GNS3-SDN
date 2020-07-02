@@ -5,7 +5,7 @@
 <capabilities>
    <capability>urn:ietf:params:netconf:base:1.0</capability>
 </capabilities>
-</hello>
+</hello>]]>]]>
 
 <!--Get-config-->
 
@@ -17,7 +17,7 @@
 <running/>
 </source>
 </get-config>
-</rpc>
+</rpc>]]>]]>
 
 <!--Edit-config-->
 <?xml version="1.0"?>
@@ -67,6 +67,6 @@
     </native>
   </config>
 </edit-config>
-</rpc>
+</rpc>]]>]]>
 
 
