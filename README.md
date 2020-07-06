@@ -5,6 +5,7 @@ This repo is for Network automation with python, ncclient,
  
 ## Required software tools set up
 - [Set up Windows 10 workstation environment](/Topology/00_setup_Windows10_environment.ipynb)
+- [Install ODL and OpenFlow Manager in Docker](/Docker/ODL-OFM/00_install_run_ODL_OFM.ipynb)
 
 ## Set up topology for the lab in GNS3
 - [Build the initial topology](/Topology/00_build_topology.ipynb)
